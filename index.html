@@ -381,35 +381,34 @@
 <button class="open-modal-btn wa-float border-0 cursor-pointer" aria-label="Fale conosco pelo WhatsApp"><i class="fab fa-whatsapp" style="font-size:32px;"></i></button>
 
 <script>
-  // HAMBÚRGUER: controle total via JS
+  // HAMBÚRGUER - controle corrigido
   (function() {
-    const hamburger = document.getElementById('hamburgerBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburger = document.getElementById("hamburgerBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
     
     function updateHamburger() {
       if (window.innerWidth >= 1024) {
-        hamburger.style.display = 'none';
-        mobileMenu.classList.remove('open');
-        hamburger.classList.remove('active');
+        hamburger.style.display = "none";
+        mobileMenu.classList.remove("open");
+        hamburger.classList.remove("active");
       } else {
-        hamburger.style.display = 'inline-block';
+        hamburger.style.display = "inline-block";
       }
     }
     
-    window.addEventListener('resize', updateHamburger);
-    window.addEventListener('load', updateHamburger);
-    updateHamburger();
+    window.addEventListener("resize", updateHamburger);
+    window.addEventListener("load", updateHamburger);
     
-    hamburger.addEventListener('click', function() {
+    hamburger.addEventListener("click", function() {
       if (window.innerWidth < 1024) {
-        mobileMenu.classList.toggle('open');
-        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("active");
       }
     });
     
     window.closeMenu = function() {
-      mobileMenu.classList.remove('open');
-      hamburger.classList.remove('active');
+      mobileMenu.classList.remove("open");
+      hamburger.classList.remove("active");
     };
   })();
 
