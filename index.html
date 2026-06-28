@@ -7,7 +7,7 @@
   <meta name="description" content="Pneus, óleos, freios, palhetas, linha leve e pesada. Entrega rápida em Trairi-CE. Ligue (85) 3351-1111.">
   <meta property="og:title" content="Auto Peças Trairi — Performance em 4 Rodas">
   <meta property="og:description" content="Autopeças e acessórios em geral. Atendimento rápido e equipe pronta para ajudar.">
-  <meta property="og:image" content="https://www.autopecastrairi.com.br/img/og-image.webp">
+  <meta property="og:image" content="https://www.autopecastrairi.com.br/img/og-image.jpg">
   <meta property="og:url" content="https://www.autopecastrairi.com.br">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="img/favicon.png">
@@ -16,8 +16,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="libs/tailwind/tailwind.min.js"></script>
-  <script src="libs/lucide/lucide.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -46,21 +46,21 @@
     #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #e30613, #ffcc00); z-index: 100; width: 0%; transition: width 0.1s linear; }
 
     .site-header { position: sticky; top: 0; z-index: 60; background: rgba(11, 26, 43, 0.78); backdrop-filter: blur(16px) saturate(180%); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
-    .nav-link { color: #94a3b8; font-weight: 500; font-size: 14px; transition: color 0.3s, border-color 0.3s; border-bottom: 2px solid transparent; padding-bottom: 4px; }
+    .nav-link { color: #94a3b8; font-weight: 500; font-size: 14px; transition: color 0.3s, border-color 0.3s; border-bottom: 2px solid transparent; padding-bottom: 4px; text-decoration: none; }
     .nav-link:hover, .nav-link.active { color: #ffffff; border-bottom-color: #ffcc00; }
 
     .mobile-menu { position: fixed; top: 72px; left: 0; width: 100%; height: calc(100vh - 72px); background: rgba(11, 26, 43, 0.96); backdrop-filter: blur(12px); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; display: none; z-index: 50; opacity: 0; transition: opacity 0.3s; }
     .mobile-menu.open { display: flex; opacity: 1; }
 
-    .hamburger { display: none !important; cursor: pointer; background: none; border: none; padding: 0; width: 28px; height: 20px; position: relative; }
-    @media (max-width: 1023px) { .hamburger { display: inline-block !important; } }
-    .hamburger .line { display: block; width: 100%; height: 2px; background: #fff; border-radius: 2px; position: absolute; left: 0; transition: transform 0.3s ease, opacity 0.2s ease; }
-    .hamburger .line:nth-child(1) { top: 0; }
-    .hamburger .line:nth-child(2) { top: 9px; }
-    .hamburger .line:nth-child(3) { top: 18px; }
-    .hamburger.active .line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-    .hamburger.active .line:nth-child(2) { opacity: 0; }
-    .hamburger.active .line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+    /* HAMBÚRGUER - CSS base */
+    .hamburger-btn { display: none; cursor: pointer; background: none; border: none; padding: 0; width: 28px; height: 20px; position: relative; }
+    .hamburger-btn .line { display: block; width: 100%; height: 2px; background: #fff; border-radius: 2px; position: absolute; left: 0; transition: transform 0.3s ease, opacity 0.2s ease; }
+    .hamburger-btn .line:nth-child(1) { top: 0; }
+    .hamburger-btn .line:nth-child(2) { top: 9px; }
+    .hamburger-btn .line:nth-child(3) { top: 18px; }
+    .hamburger-btn.active .line:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+    .hamburger-btn.active .line:nth-child(2) { opacity: 0; }
+    .hamburger-btn.active .line:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
     .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; font-family: 'Poppins', sans-serif; font-weight: 700; border-radius: 9999px; transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1); text-decoration: none; position: relative; overflow: hidden; }
     .btn-wa { background: #19b94a; color: #fff; box-shadow: 0 8px 30px rgba(25, 185, 74, 0.35); }
@@ -78,7 +78,6 @@
     .carousel-dots button { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); border: none; cursor: pointer; transition: all 0.3s; padding: 0; }
     .carousel-dots button.active { background: #ffcc00; width: 28px; border-radius: 10px; }
 
-    /* FAIXA DE MARCAS */
     .marcas-section { padding: 2.5rem 0; }
     .marcas-section .section-title { color: #ffffff; }
     .marcas-slider { width: 100%; overflow: hidden; }
@@ -86,12 +85,11 @@
     .marcas-track img { height: 60px; max-width: 160px; margin: 0 30px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1)); }
     @keyframes scrollMarcas { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    /* FAIXA DE DEPOIMENTOS (carrossel) */
     .depoimentos-section { padding: 2.5rem 0; }
     .depoimentos-slider { width: 100%; overflow: hidden; }
     .depoimentos-track { display: flex; width: max-content; animation: scrollDepoimentos 40s linear infinite; }
     .depoimentos-track:hover { animation-play-state: paused; }
-    .depo-card { flex: 0 0 380px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 28px 24px; backdrop-filter: blur(4px); transition: all 0.3s; margin: 10px 20px 10px 20px; min-height: 200px; position: relative; overflow: visible; }
+    .depo-card { flex: 0 0 380px; background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 20px; padding: 28px 24px; backdrop-filter: blur(4px); transition: all 0.3s; margin: 10px 20px; min-height: 200px; position: relative; overflow: visible; }
     .depo-card:hover { border-color: #ffcc00; background: rgba(255, 204, 0, 0.04); }
     @keyframes scrollDepoimentos { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
@@ -107,9 +105,9 @@
     .filter-btn { padding: 8px 20px; border-radius: 40px; font-weight: 600; font-size: 14px; background: rgba(255, 255, 255, 0.04); color: #94a3b8; border: 1px solid transparent; transition: all 0.3s; cursor: pointer; }
     .filter-btn.active, .filter-btn:hover { background: rgba(255, 204, 0, 0.12); color: #ffcc00; border-color: #ffcc00; }
 
-    .back-top { position: fixed; bottom: 100px; right: 28px; z-index: 60; width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 204, 0, 0.15); backdrop-filter: blur(8px); border: 1px solid rgba(255, 204, 0, 0.3); color: #ffcc00; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; cursor: pointer; }
+    .back-top { position: fixed; bottom: 100px; right: 28px; z-index: 60; width: 48px; height: 48px; border-radius: 50%; background: #ffcc00; color: #0b1a2b; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; cursor: pointer; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 28px; font-weight: bold; }
     .back-top.visible { opacity: 1; visibility: visible; }
-    .back-top:hover { background: #ffcc00; color: #0b1a2b; }
+    .back-top:hover { background: #e6b800; transform: translateY(-3px); }
 
     .contact-modal { position: fixed; inset: 0; z-index: 999; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(12px); display: flex; align-items: flex-start; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; padding: 20px; overflow-y: auto; }
     .contact-modal.open { opacity: 1; visibility: visible; }
@@ -171,7 +169,8 @@
       <button class="open-modal-btn hidden sm:flex items-center gap-2 bg-[#18b94a] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#16a843] transition shadow-lg shadow-green-900/30 border-0 cursor-pointer">
         <i class="fab fa-whatsapp text-lg"></i> WhatsApp
       </button>
-      <button id="hamburgerBtn" class="hamburger" aria-label="Abrir menu">
+      <!-- HAMBÚRGUER CONTROLADO POR JS -->
+      <button id="hamburgerBtn" class="hamburger-btn" aria-label="Abrir menu">
         <span class="line"></span><span class="line"></span><span class="line"></span>
       </button>
     </div>
@@ -208,22 +207,22 @@
               <i class="fab fa-whatsapp text-2xl"></i> Chamar agora
             </button>
             <a href="#pecas" class="btn btn-outline px-8 py-3.5 text-base no-underline">
-              <i data-lucide="search"></i> Ver catálogo
+              <i class="fas fa-search"></i> Ver catálogo
             </a>
           </div>
           <div class="flex items-center gap-6 mt-8 text-sm text-slate-400">
-            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i> Entrega rápida</span>
-            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i> Peças originais</span>
-            <span class="flex items-center gap-1"><i data-lucide="check-circle" class="text-emerald-400 w-4 h-4"></i> Suporte humano</span>
+            <span class="flex items-center gap-1"><i class="fas fa-check-circle text-emerald-400"></i> Entrega rápida</span>
+            <span class="flex items-center gap-1"><i class="fas fa-check-circle text-emerald-400"></i> Peças originais</span>
+            <span class="flex items-center gap-1"><i class="fas fa-check-circle text-emerald-400"></i> Suporte humano</span>
           </div>
         </div>
         <div class="hero-carousel fade-up" style="transition-delay:0.2s;">
           <div class="carousel-track" id="carouselTrack" role="region" aria-roledescription="carousel" aria-label="Galeria de produtos">
-            <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 1 de 5"><img src="img/banner1.webp" alt="Fachada Auto Peças Trairi" loading="lazy" /></div>
-            <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 2 de 5"><img src="img/banner2.webp" alt="Peças Bosch" loading="lazy" /></div>
-            <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 3 de 5"><img src="img/banner3.webp" alt="Amortecedores Monroe" loading="lazy" /></div>
-            <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 4 de 5"><img src="img/banner4.webp" alt="Óleos Lubrax" loading="lazy" /></div>
-            <div class="carousel-slide" role="group" aria-roledescription="slide" aria-label="Slide 5 de 5"><img src="img/banner5.webp" alt="Baterias Moura" loading="lazy" /></div>
+            <div class="carousel-slide"><img src="img/banner1.webp" alt="Fachada Auto Peças Trairi" loading="eager" /></div>
+            <div class="carousel-slide"><img src="img/banner2.webp" alt="Peças" loading="eager" /></div>
+            <div class="carousel-slide"><img src="img/banner3.webp" alt="Motor" loading="eager" /></div>
+            <div class="carousel-slide"><img src="img/banner4.webp" alt="Óleos" loading="eager" /></div>
+            <div class="carousel-slide"><img src="img/banner5.webp" alt="Baterias" loading="eager" /></div>
           </div>
           <div class="carousel-dots" id="carouselDots"></div>
         </div>
@@ -231,15 +230,17 @@
     </div>
   </section>
 
+  <!-- ESTATÍSTICAS -->
   <section class="py-12 border-y border-white/5 bg-[#0a1624]">
     <div class="max-w-7xl mx-auto px-5 sm:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div class="fade-up"><i data-lucide="users" class="text-brand-yellow w-8 h-8 mx-auto mb-2"></i><div class="stat-number" data-target="1250">0</div><p class="text-slate-400 text-sm font-medium mt-1">Clientes atendidos</p></div>
-      <div class="fade-up" style="transition-delay:0.1s;"><i data-lucide="package" class="text-brand-yellow w-8 h-8 mx-auto mb-2"></i><div class="stat-number" data-target="3800">0</div><p class="text-slate-400 text-sm font-medium mt-1">Peças entregues</p></div>
-      <div class="fade-up" style="transition-delay:0.2s;"><i data-lucide="thumbs-up" class="text-brand-yellow w-8 h-8 mx-auto mb-2"></i><div class="stat-number" data-target="98">0</div><p class="text-slate-400 text-sm font-medium mt-1">% de satisfação</p></div>
-      <div class="fade-up" style="transition-delay:0.3s;"><i data-lucide="calendar" class="text-brand-yellow w-8 h-8 mx-auto mb-2"></i><div class="stat-number" data-target="12">0</div><p class="text-slate-400 text-sm font-medium mt-1">Anos de estrada</p></div>
+      <div class="fade-up"><i class="fas fa-users text-brand-yellow text-2xl mx-auto mb-2"></i><div class="stat-number" data-target="1250">0</div><p class="text-slate-400 text-sm">Clientes atendidos</p></div>
+      <div class="fade-up" style="transition-delay:0.1s;"><i class="fas fa-box text-brand-yellow text-2xl mx-auto mb-2"></i><div class="stat-number" data-target="3800">0</div><p class="text-slate-400 text-sm">Peças entregues</p></div>
+      <div class="fade-up" style="transition-delay:0.2s;"><i class="fas fa-thumbs-up text-brand-yellow text-2xl mx-auto mb-2"></i><div class="stat-number" data-target="98">0</div><p class="text-slate-400 text-sm">% de satisfação</p></div>
+      <div class="fade-up" style="transition-delay:0.3s;"><i class="fas fa-calendar text-brand-yellow text-2xl mx-auto mb-2"></i><div class="stat-number" data-target="12">0</div><p class="text-slate-400 text-sm">Anos de estrada</p></div>
     </div>
   </section>
 
+  <!-- CATÁLOGO -->
   <section id="pecas" class="py-20 md:py-28 bg-[#0a1626]">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
@@ -253,79 +254,71 @@
         </div>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6" id="catalogGrid">
-        <div class="glass-card tilt-card fade-up" data-category="motor"><div class="relative"><img class="card-img" src="img/motor.webp" alt="Peças de motor" loading="lazy" /><span class="card-badge"><i data-lucide="fuel" class="w-4 h-4 inline mr-1"></i> Motor</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Motor e Lubrificação</h3><p class="text-slate-400 text-sm mt-1">Óleos, correias, juntas, bomba d'água, velas.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i data-lucide="arrow-right" class="w-4 h-4 inline"></i> Solicitar</button></div></div>
-        <div class="glass-card tilt-card fade-up" style="transition-delay:0.05s;" data-category="freios"><div class="relative"><img class="card-img" src="img/freios.webp" alt="Freios" loading="lazy" /><span class="card-badge"><i data-lucide="shield" class="w-4 h-4 inline mr-1"></i> Freios</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Freios e Segurança</h3><p class="text-slate-400 text-sm mt-1">Pastilhas, discos, lonas, fluido, cilindros.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i data-lucide="arrow-right" class="w-4 h-4 inline"></i> Solicitar</button></div></div>
-        <div class="glass-card tilt-card fade-up" style="transition-delay:0.1s;" data-category="suspensao"><div class="relative"><img class="card-img" src="img/suspensao.webp" alt="Suspensão" loading="lazy" /><span class="card-badge"><i data-lucide="car" class="w-4 h-4 inline mr-1"></i> Suspensão</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Suspensão e Estabilidade</h3><p class="text-slate-400 text-sm mt-1">Amortecedores, bandejas, pivôs, bieletas.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i data-lucide="arrow-right" class="w-4 h-4 inline"></i> Solicitar</button></div></div>
-        <div class="glass-card tilt-card fade-up" style="transition-delay:0.15s;" data-category="outros"><div class="relative"><img class="card-img" src="img/filtros.webp" alt="Filtros" loading="lazy" /><span class="card-badge"><i data-lucide="filter" class="w-4 h-4 inline mr-1"></i> Filtros</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Filtros e Fluidos</h3><p class="text-slate-400 text-sm mt-1">Ar, óleo, combustível, cabine.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i data-lucide="arrow-right" class="w-4 h-4 inline"></i> Solicitar</button></div></div>
-        <div class="glass-card tilt-card fade-up" style="transition-delay:0.2s;" data-category="outros"><div class="relative"><img class="card-img" src="img/bateria.webp" alt="Baterias" loading="lazy" /><span class="card-badge"><i data-lucide="battery" class="w-4 h-4 inline mr-1"></i> Baterias</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Baterias e Elétrica</h3><p class="text-slate-400 text-sm mt-1">Moura, Heliar, instalação e teste.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i data-lucide="arrow-right" class="w-4 h-4 inline"></i> Solicitar</button></div></div>
-        <div class="glass-card tilt-card fade-up" style="transition-delay:0.25s;" data-category="outros"><div class="relative"><img class="card-img" src="img/acessorios.webp" alt="Acessórios" loading="lazy" /><span class="card-badge"><i data-lucide="wrench" class="w-4 h-4 inline mr-1"></i> Acessórios</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Acessórios e Utilitários</h3><p class="text-slate-400 text-sm mt-1">Palhetas, lâmpadas, calotas, aditivos.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i data-lucide="arrow-right" class="w-4 h-4 inline"></i> Solicitar</button></div></div>
+        <div class="glass-card tilt-card fade-up" data-category="motor"><div class="relative"><img class="card-img" src="img/motor.webp" alt="Motor" loading="lazy" /><span class="card-badge"><i class="fas fa-gas-pump mr-1"></i> Motor</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Motor e Lubrificação</h3><p class="text-slate-400 text-sm mt-1">Óleos, correias, juntas, bomba d'água, velas.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i class="fas fa-arrow-right mr-1"></i> Solicitar</button></div></div>
+        <div class="glass-card tilt-card fade-up" data-category="freios"><div class="relative"><img class="card-img" src="img/freios.webp" alt="Freios" loading="lazy" /><span class="card-badge"><i class="fas fa-shield-alt mr-1"></i> Freios</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Freios e Segurança</h3><p class="text-slate-400 text-sm mt-1">Pastilhas, discos, lonas, fluido.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i class="fas fa-arrow-right mr-1"></i> Solicitar</button></div></div>
+        <div class="glass-card tilt-card fade-up" data-category="suspensao"><div class="relative"><img class="card-img" src="img/suspensao.webp" alt="Suspensão" loading="lazy" /><span class="card-badge"><i class="fas fa-car mr-1"></i> Suspensão</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Suspensão e Estabilidade</h3><p class="text-slate-400 text-sm mt-1">Amortecedores, bandejas, pivôs.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i class="fas fa-arrow-right mr-1"></i> Solicitar</button></div></div>
+        <div class="glass-card tilt-card fade-up" data-category="outros"><div class="relative"><img class="card-img" src="img/filtros.webp" alt="Filtros" loading="lazy" /><span class="card-badge"><i class="fas fa-filter mr-1"></i> Filtros</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Filtros e Fluidos</h3><p class="text-slate-400 text-sm mt-1">Ar, óleo, combustível, cabine.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i class="fas fa-arrow-right mr-1"></i> Solicitar</button></div></div>
+        <div class="glass-card tilt-card fade-up" data-category="outros"><div class="relative"><img class="card-img" src="img/bateria.webp" alt="Baterias" loading="lazy" /><span class="card-badge"><i class="fas fa-battery-full mr-1"></i> Baterias</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Baterias e Elétrica</h3><p class="text-slate-400 text-sm mt-1">Moura, Heliar, instalação.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i class="fas fa-arrow-right mr-1"></i> Solicitar</button></div></div>
+        <div class="glass-card tilt-card fade-up" data-category="outros"><div class="relative"><img class="card-img" src="img/acessorios.webp" alt="Acessórios" loading="lazy" /><span class="card-badge"><i class="fas fa-wrench mr-1"></i> Acessórios</span></div><div class="p-6"><h3 class="font-poppins font-bold text-white text-xl">Acessórios e Utilitários</h3><p class="text-slate-400 text-sm mt-1">Palhetas, lâmpadas, calotas.</p><button class="open-modal-btn inline-block mt-4 text-brand-yellow font-semibold hover:underline border-0 bg-transparent cursor-pointer"><i class="fas fa-arrow-right mr-1"></i> Solicitar</button></div></div>
       </div>
     </div>
   </section>
 
+  <!-- DIFERENCIAIS -->
   <section id="diferenciais" class="py-20 bg-navy">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <h2 class="font-poppins font-extrabold text-white text-3xl sm:text-5xl text-center">Mais que uma loja, <span class="text-brand-yellow">uma parceria</span></h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-        <div class="fade-up text-center p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-brand-yellow/40 transition"><i data-lucide="truck" class="w-8 h-8 text-brand-yellow mx-auto"></i><h3 class="font-poppins font-bold text-white text-lg mt-4">Entrega Relâmpago</h3><p class="text-slate-400 text-sm mt-1">Em Trairí e região, suas peças chegam em tempo recorde.</p></div>
-        <div class="fade-up text-center p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-brand-yellow/40 transition" style="transition-delay:0.1s;"><i data-lucide="award" class="w-8 h-8 text-brand-yellow mx-auto"></i><h3 class="font-poppins font-bold text-white text-lg mt-4">Garantia de Origem</h3><p class="text-slate-400 text-sm mt-1">Trabalhamos apenas com marcas certificadas e qualidade comprovada.</p></div>
-        <div class="fade-up text-center p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-brand-yellow/40 transition" style="transition-delay:0.2s;"><i data-lucide="message-circle" class="w-8 h-8 text-brand-yellow mx-auto"></i><h3 class="font-poppins font-bold text-white text-lg mt-4">Atendimento Humanizado</h3><p class="text-slate-400 text-sm mt-1">Tire dúvidas e faça pedidos direto no WhatsApp com nossa equipe.</p></div>
-        <div class="fade-up text-center p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-brand-yellow/40 transition" style="transition-delay:0.3s;"><i data-lucide="dollar-sign" class="w-8 h-8 text-brand-yellow mx-auto"></i><h3 class="font-poppins font-bold text-white text-lg mt-4">Preço Justo</h3><p class="text-slate-400 text-sm mt-1">Custo-benefício imbatível sem abrir mão da qualidade.</p></div>
+        <div class="fade-up text-center p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-brand-yellow/40 transition"><i class="fas fa-truck text-brand-yellow text-2xl mx-auto"></i><h3 class="font-poppins font-bold text-white text-lg mt-4">Entrega Relâmpago</h3><p class="text-slate-400 text-sm mt-1">Em Trairí e região, suas peças chegam rápido.</p></div>
+        <div class="fade-up text-center p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-brand-yellow/40 transition" style="transition-delay:0.1s;"><i class="fas fa-award text-brand-yellow text-2xl mx-auto"></i><h3 class="font-poppins font-bold text-white text-lg mt-4">Garantia de Origem</h3><p class="text-slate-400 text-sm mt-1">Marcas certificadas e qualidade comprovada.</p></div>
+        <div class="fade-up text-center p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-brand-yellow/40 transition" style="transition-delay:0.2s;"><i class="fas fa-comment text-brand-yellow text-2xl mx-auto"></i><h3 class="font-poppins font-bold text-white text-lg mt-4">Atendimento Humanizado</h3><p class="text-slate-400 text-sm mt-1">Tire dúvidas pelo WhatsApp com nossa equipe.</p></div>
+        <div class="fade-up text-center p-8 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm hover:border-brand-yellow/40 transition" style="transition-delay:0.3s;"><i class="fas fa-dollar-sign text-brand-yellow text-2xl mx-auto"></i><h3 class="font-poppins font-bold text-white text-lg mt-4">Preço Justo</h3><p class="text-slate-400 text-sm mt-1">Custo-benefício imbatível sem abrir mão da qualidade.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- ========== FAIXA DE MARCAS ========== -->
+  <!-- MARCAS -->
   <section id="marcas" class="marcas-section">
-    <div class="text-center mb-8">
-      <h2 class="font-poppins font-extrabold text-3xl sm:text-5xl section-title">Marcas que <span class="text-brand-yellow">trabalhamos</span></h2>
-    </div>
-    <div style="background: #f1f3f5; padding: 20px 0; width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; overflow: hidden;">
-      <div class="marcas-slider">
-        <div class="marcas-track" id="marcasTrack"></div>
-      </div>
+    <div class="text-center mb-8"><h2 class="font-poppins font-extrabold text-3xl sm:text-5xl section-title">Marcas que <span class="text-brand-yellow">trabalhamos</span></h2></div>
+    <div style="background: #f1f3f5; padding: 20px 0; width: 100vw; position: relative; left: 50%; margin-left: -50vw; overflow: hidden;">
+      <div class="marcas-slider"><div class="marcas-track" id="marcasTrack"></div></div>
     </div>
   </section>
 
-  <!-- ========== FAIXA DE DEPOIMENTOS (CARROSSEL) ========== -->
+  <!-- DEPOIMENTOS -->
   <section id="depoimentos" class="depoimentos-section">
-    <div class="text-center mb-8">
-      <h2 class="font-poppins font-extrabold text-white text-3xl sm:text-5xl">Quem confia, <span class="text-brand-yellow">recomenda</span></h2>
-    </div>
-    <div style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw; overflow: hidden;">
-      <div class="depoimentos-slider">
-        <div class="depoimentos-track" id="depoimentosTrack"></div>
-      </div>
+    <div class="text-center mb-8"><h2 class="font-poppins font-extrabold text-white text-3xl sm:text-5xl">Quem confia, <span class="text-brand-yellow">recomenda</span></h2></div>
+    <div style="width: 100vw; position: relative; left: 50%; margin-left: -50vw; overflow: hidden;">
+      <div class="depoimentos-slider"><div class="depoimentos-track" id="depoimentosTrack"></div></div>
     </div>
   </section>
 
+  <!-- CONTATO -->
   <section id="contato" class="py-20 bg-navy">
     <div class="max-w-7xl mx-auto px-5 sm:px-8">
       <div class="grid lg:grid-cols-2 gap-12">
         <div class="fade-up">
           <h2 class="font-poppins font-extrabold text-white text-3xl sm:text-5xl">Estamos <span class="text-brand-yellow">aqui</span></h2>
           <div class="mt-6 space-y-4 text-slate-300">
-            <p class="flex items-start gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-brand-yellow mt-1"></i><span><span class="text-white font-semibold">Endereço:</span><br>Av. Salvador Martins, 398 - Volta do "S", Trairi - CE, 62690-000</span></p>
-            <p class="flex items-start gap-3"><i data-lucide="phone" class="w-5 h-5 text-brand-yellow mt-1"></i><span><span class="text-white font-semibold">Telefone fixo:</span><br><a href="tel:+558533511111" class="text-brand-yellow hover:underline">(85) 3351-1111</a></span></p>
-            <p class="flex items-start gap-3"><i data-lucide="clock" class="w-5 h-5 text-brand-yellow mt-1"></i><span><span class="text-white font-semibold">Horário:</span><br>Seg–Sex: 8h–18h | Sáb: 8h–12h</span></p>
+            <p><i class="fas fa-map-marker-alt text-brand-yellow mr-2"></i><strong class="text-white">Endereço:</strong><br>Av. Salvador Martins, 398 - Volta do "S", Trairi - CE, 62690-000</p>
+            <p><i class="fas fa-phone text-brand-yellow mr-2"></i><strong class="text-white">Telefone:</strong><br><a href="tel:+558533511111" class="text-brand-yellow">(85) 3351-1111</a></p>
+            <p><i class="fas fa-clock text-brand-yellow mr-2"></i><strong class="text-white">Horário:</strong><br>Seg–Sex: 8h–18h | Sáb: 8h–12h</p>
           </div>
-          <div class="flex flex-wrap gap-3 mt-6">
-            <button class="open-modal-btn btn btn-wa px-5 py-2.5 text-sm no-underline border-0 cursor-pointer"><i class="fab fa-whatsapp"></i> Falar com Vendas</button>
-          </div>
-          <p class="text-slate-400 text-sm mt-4"><i data-lucide="users" class="inline w-4 h-4"></i> Clique para escolher o atendente.</p>
+          <div class="mt-6"><button class="open-modal-btn btn btn-wa px-5 py-2.5 text-sm border-0 cursor-pointer"><i class="fab fa-whatsapp"></i> Falar com Vendas</button></div>
         </div>
         <div class="map-container fade-up" style="transition-delay:0.2s;">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.075591505275!2d-39.24868368465911!3d-3.2594771975689467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c1ae7c4b9e9e4b%3A0x9c6a9fe51b0e1e4b!2sAv.%20Salvador%20Martins%2C%20398%20-%20Volta%20do%20S%2C%20Trairi%20-%20CE%2C%2062690-000!5e0!3m2!1spt-BR!2sbr!4v1690000000000" width="100%" height="320" style="border:0; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Auto Peças Trairi - Volta do S"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.075591505275!2d-39.24868368465911!3d-3.2594771975689467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c1ae7c4b9e9e4b%3A0x9c6a9fe51b0e1e4b!2sAv.%20Salvador%20Martins%2C%20398%20-%20Volta%20do%20S%2C%20Trairi%20-%20CE%2C%2062690-000!5e0!3m2!1spt-BR!2sbr!4v1690000000000" width="100%" height="320" style="border:0; display:block;" allowfullscreen="" loading="lazy" title="Auto Peças Trairi"></iframe>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="py-16 bg-gradient-to-r from-brand-red/20 via-transparent to-brand-yellow/10 border-y border-white/5">
     <div class="max-w-4xl mx-auto text-center px-5">
       <h2 class="font-poppins font-extrabold text-white text-3xl sm:text-4xl">Não encontrou o que precisa?</h2>
       <p class="text-slate-300 text-lg mt-2">Fale com a gente! Nós temos a peça certa para o seu carro.</p>
-      <button class="open-modal-btn btn btn-red px-10 py-4 text-lg mt-6 inline-flex border-0 cursor-pointer"><i class="fab fa-whatsapp text-2xl"></i> Consultar especialista</button>
+      <button class="open-modal-btn btn btn-red px-10 py-4 text-lg mt-6 border-0 cursor-pointer"><i class="fab fa-whatsapp text-2xl"></i> Consultar especialista</button>
     </div>
   </section>
 </main>
@@ -335,42 +328,33 @@
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-8">
       <div class="col-span-2 lg:col-span-1">
         <img src="img/logo_sem_fundo.png" alt="Logo Auto Peças Trairi" class="h-8 mb-3 rounded-2xl" />
-        <p class="text-slate-400 text-sm flex items-center gap-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Peças que movem o Ceará.</p>
+        <p class="text-slate-400 text-sm"><i class="fas fa-map-marker-alt mr-1"></i> Peças que movem o Ceará.</p>
         <p class="text-slate-400 text-sm mt-2">© 2026 Auto Peças Trairi.</p>
       </div>
       <div>
-        <h4 class="text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 mb-3"><i data-lucide="link" class="w-4 h-4"></i> Institucional</h4>
+        <h4 class="text-white font-bold text-sm uppercase mb-3"><i class="fas fa-link mr-2"></i> Institucional</h4>
         <ul class="space-y-2 text-sm text-slate-400">
-          <li><a href="#inicio" class="hover:text-white transition">Início</a></li>
-          <li><a href="#pecas" class="hover:text-white transition">Peças</a></li>
-          <li><a href="#marcas" class="hover:text-white transition">Marcas</a></li>
-          <li><a href="#contato" class="hover:text-white transition">Contato</a></li>
-          <li><a href="/politica-de-privacidade" class="hover:text-white transition">Política de Privacidade</a></li>
+          <li><a href="#inicio" class="hover:text-white">Início</a></li>
+          <li><a href="#pecas" class="hover:text-white">Peças</a></li>
+          <li><a href="#marcas" class="hover:text-white">Marcas</a></li>
+          <li><a href="#contato" class="hover:text-white">Contato</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 mb-3"><i data-lucide="phone" class="w-4 h-4"></i> Contato</h4>
+        <h4 class="text-white font-bold text-sm uppercase mb-3"><i class="fas fa-phone mr-2"></i> Contato</h4>
         <ul class="space-y-2 text-sm text-slate-400 mb-4">
-          <li><a href="tel:+558533511111" class="hover:text-white transition">(85) 3351-1111</a></li>
+          <li><a href="tel:+558533511111" class="hover:text-white">(85) 3351-1111</a></li>
           <li>Trairí-CE</li>
           <li>@autopecastrairi</li>
         </ul>
-        <h4 class="text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2 mb-3"><i data-lucide="share-2" class="w-4 h-4"></i> Redes</h4>
+        <h4 class="text-white font-bold text-sm uppercase mb-3"><i class="fas fa-share-alt mr-2"></i> Redes</h4>
         <div class="flex gap-4">
-          <a href="https://www.instagram.com/autopecastrairi" target="_blank" rel="noopener" class="text-slate-400 hover:text-white transition">
-            <i class="fab fa-instagram text-2xl text-[#E1306C]"></i>
-          </a>
-          <button class="open-modal-btn text-slate-400 hover:text-white transition bg-transparent border-0 cursor-pointer p-0">
-            <i class="fab fa-whatsapp text-2xl text-[#1fca59]"></i>
-          </button>
+          <a href="https://www.instagram.com/autopecastrairi" target="_blank" rel="noopener" class="text-slate-400 hover:text-white"><i class="fab fa-instagram text-2xl" style="color:#E1306C;"></i></a>
+          <button class="open-modal-btn text-slate-400 hover:text-white bg-transparent border-0 cursor-pointer p-0"><i class="fab fa-whatsapp text-2xl" style="color:#1fca59;"></i></button>
         </div>
       </div>
     </div>
-    <div class="border-t border-white/5 mt-10 pt-6 text-center text-slate-500 text-sm">
-      Todos os direitos reservados.
-      <span class="mx-2">|</span>
-      <a href="/politica-de-privacidade" class="hover:text-white transition">Política de Privacidade</a>
-    </div>
+    <div class="border-t border-white/5 mt-10 pt-6 text-center text-slate-500 text-sm">Todos os direitos reservados.</div>
   </div>
 </footer>
 
@@ -378,257 +362,164 @@
   <div class="contact-modal-content">
     <div class="contact-modal-header">
       <h2 id="contactModalTitle"><i class="fab fa-whatsapp text-brand-yellow mr-2"></i> Fale com nossa equipe</h2>
-      <button class="close-modal" id="closeModalBtn" aria-label="Fechar"><i data-lucide="x"></i></button>
+      <button class="close-modal" id="closeModalBtn" aria-label="Fechar"><i class="fas fa-times"></i></button>
     </div>
     <div class="modal-body">
       <div class="contact-list">
-        <div class="contact-item">
-          <div class="icon-wrap"><i data-lucide="user"></i></div>
-          <div class="info"><div class="name">João Vitor</div><div class="role">Vendas</div></div>
-          <div class="contact-actions">
-            <a href="https://wa.me/5585981221396?text=Oi%20Jo%C3%A3o%20Vitor" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="tel:+5585981221396" class="tel-link"><i data-lucide="phone"></i> Ligar</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="icon-wrap"><i data-lucide="user"></i></div>
-          <div class="info"><div class="name">Levi</div><div class="role">Vendas</div></div>
-          <div class="contact-actions">
-            <a href="https://wa.me/5585996917343?text=Oi%20Levi" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="tel:+5585996917343" class="tel-link"><i data-lucide="phone"></i> Ligar</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="icon-wrap"><i data-lucide="user"></i></div>
-          <div class="info"><div class="name">Leandro</div><div class="role">Vendas</div></div>
-          <div class="contact-actions">
-            <a href="https://wa.me/5585996917331?text=Oi%20Leandro" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="tel:+5585996917331" class="tel-link"><i data-lucide="phone"></i> Ligar</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="icon-wrap"><i data-lucide="user"></i></div>
-          <div class="info"><div class="name">Rony</div><div class="role">Vendas</div></div>
-          <div class="contact-actions">
-            <a href="https://wa.me/5585991171031?text=Oi%20Rony" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-            <a href="tel:+5585991171031" class="tel-link"><i data-lucide="phone"></i> Ligar</a>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="icon-wrap"><i data-lucide="phone"></i></div>
-          <div class="info"><div class="name">Telefone fixo</div><div class="role">Geral</div></div>
-          <div class="contact-actions">
-            <a href="tel:+558533511111" class="tel-link"><i data-lucide="phone"></i> Ligar</a>
-          </div>
-        </div>
+        <div class="contact-item"><div class="icon-wrap"><i class="fas fa-user"></i></div><div class="info"><div class="name">João Vitor</div><div class="role">Vendas</div></div><div class="contact-actions"><a href="https://wa.me/5585981221396" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+5585981221396" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div>
+        <div class="contact-item"><div class="icon-wrap"><i class="fas fa-user"></i></div><div class="info"><div class="name">Levi</div><div class="role">Vendas</div></div><div class="contact-actions"><a href="https://wa.me/5585996917343" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+5585996917343" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div>
+        <div class="contact-item"><div class="icon-wrap"><i class="fas fa-user"></i></div><div class="info"><div class="name">Leandro</div><div class="role">Vendas</div></div><div class="contact-actions"><a href="https://wa.me/5585996917331" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+5585996917331" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div>
+        <div class="contact-item"><div class="icon-wrap"><i class="fas fa-user"></i></div><div class="info"><div class="name">Rony</div><div class="role">Vendas</div></div><div class="contact-actions"><a href="https://wa.me/5585991171031" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+5585991171031" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div>
+        <div class="contact-item"><div class="icon-wrap"><i class="fas fa-phone"></i></div><div class="info"><div class="name">Telefone fixo</div><div class="role">Geral</div></div><div class="contact-actions"><a href="tel:+558533511111" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div>
       </div>
-      <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 16px; text-align: center;">
-        <i data-lucide="alert-circle" style="width:14px;height:14px;display:inline;"></i> Se o WhatsApp não abrir, use a opção "Ligar".
-      </p>
+      <p style="font-size:0.8rem;color:#94a3b8;margin-top:16px;text-align:center;"><i class="fas fa-exclamation-circle mr-1"></i> Se o WhatsApp não abrir, use a opção "Ligar".</p>
     </div>
   </div>
 </div>
 
-<button id="backTop" class="back-top" aria-label="Voltar ao topo"><i data-lucide="chevron-up"></i></button>
-<button class="open-modal-btn wa-float border-0 cursor-pointer" aria-label="Fale conosco pelo WhatsApp">
-  <i class="fab fa-whatsapp" style="font-size: 32px;"></i>
-</button>
+<button id="backTop" class="back-top" aria-label="Voltar ao topo">↑</button>
+<button class="open-modal-btn wa-float border-0 cursor-pointer" aria-label="Fale conosco pelo WhatsApp"><i class="fab fa-whatsapp" style="font-size:32px;"></i></button>
 
 <script>
-  function handleResize() {
+  // HAMBÚRGUER: controle total via JS
+  (function() {
     const hamburger = document.getElementById('hamburgerBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    if (window.innerWidth >= 1024) {
-      hamburger.style.display = 'none';
+    
+    function updateHamburger() {
+      if (window.innerWidth >= 1024) {
+        hamburger.style.display = 'none';
+        mobileMenu.classList.remove('open');
+        hamburger.classList.remove('active');
+      } else {
+        hamburger.style.display = 'inline-block';
+      }
+    }
+    
+    window.addEventListener('resize', updateHamburger);
+    window.addEventListener('load', updateHamburger);
+    updateHamburger();
+    
+    hamburger.addEventListener('click', function() {
+      if (window.innerWidth < 1024) {
+        mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('active');
+      }
+    });
+    
+    window.closeMenu = function() {
       mobileMenu.classList.remove('open');
       hamburger.classList.remove('active');
-    } else {
-      hamburger.style.display = 'inline-block';
-    }
-  }
-  window.addEventListener('resize', handleResize);
-  window.addEventListener('load', handleResize);
-
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  hamburgerBtn.addEventListener('click', () => {
-    if (window.innerWidth < 1024) {
-      mobileMenu.classList.toggle('open');
-      hamburgerBtn.classList.toggle('active');
-    }
-  });
-  function closeMenu() {
-    mobileMenu.classList.remove('open');
-    hamburgerBtn.classList.remove('active');
-  }
+    };
+  })();
 
   document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
-    window.addEventListener('load', () => { preloader.classList.add('hidden'); });
-    setTimeout(() => { preloader.classList.add('hidden'); }, 4000);
-    if (window.lucide) lucide.createIcons();
+    window.addEventListener('load', function() { preloader.classList.add('hidden'); });
+    setTimeout(function() { preloader.classList.add('hidden'); }, 4000);
 
     const progressBar = document.getElementById('progress-bar');
-    window.addEventListener('scroll', () => {
+    window.addEventListener('scroll', function() {
       progressBar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%';
     });
 
+    // Carrossel principal
     const track = document.getElementById('carouselTrack');
     const dotsContainer = document.getElementById('carouselDots');
     const slides = track.querySelectorAll('.carousel-slide');
     let currentIndex = 0, interval;
-    slides.forEach((_, i) => {
+    slides.forEach(function(_, i) {
       const dot = document.createElement('button');
-      dot.setAttribute('aria-label', `Ir para slide ${i + 1} de ${slides.length}`);
-      dot.setAttribute('type', 'button');
+      dot.setAttribute('aria-label', 'Slide ' + (i+1));
       if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goTo(i));
+      dot.addEventListener('click', function() { goTo(i); });
       dotsContainer.appendChild(dot);
     });
     const dots = dotsContainer.querySelectorAll('button');
-    function goTo(index) { currentIndex = index; track.style.transform = `translateX(-${currentIndex * 100}%)`; dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex)); }
+    function goTo(index) { currentIndex = index; track.style.transform = 'translateX(-' + (currentIndex*100) + '%)'; dots.forEach(function(d, i) { d.classList.toggle('active', i === currentIndex); }); }
     function nextSlide() { goTo((currentIndex + 1) % slides.length); }
-    function startCarousel() { interval = setInterval(nextSlide, 4500); }
-    startCarousel();
-    track.addEventListener('mouseenter', () => clearInterval(interval));
-    track.addEventListener('mouseleave', startCarousel);
+    interval = setInterval(nextSlide, 4500);
+    track.addEventListener('mouseenter', function() { clearInterval(interval); });
+    track.addEventListener('mouseleave', function() { interval = setInterval(nextSlide, 4500); });
 
-    // Faixa de marcas
+    // Marcas
     const marcasTrack = document.getElementById('marcasTrack');
-    const marcasImagens = [
-      'img/marcas/baterias-moura-logo-DEF0B286D5-seeklogo.com_.webp',
-      'img/marcas/bosch-logo-4-300x71.webp',
-      'img/marcas/cofap-600x315-300x158.webp',
-      'img/marcas/logo-frasle-cardoso.webp',
-      'img/marcas/logo-havoline-gradient-300x73.webp',
-      'img/marcas/logo-hiper-freios-cardoso.webp',
-      'img/marcas/logo-magneti-cardoso.webp',
-      'img/marcas/logo-mahle-cardoso.webp',
-      'img/marcas/logo-paraflu-cardoso.webp',
-      'img/marcas/logo-petronas-cardoso.webp',
-      'img/marcas/logo-sachs-cardoso.webp',
-      'img/marcas/logo-tecfil-cardoso.webp',
-      'img/marcas/logo-viemar-cardoso.webp',
-      'img/marcas/logo-zetta-cardoso.webp',
-      'img/marcas/mobil-logo-png-transparent-300x109.webp',
-      'img/marcas/ngk_logo_remotox-300x100.webp',
-      'img/marcas/2000px-Texaco_logo.svg-300x96.webp',
-      'img/marcas/ACDelco_logo.svg-300x61.webp',
-      'img/marcas/KYB_Corporation_company_logo.svg-300x97.webp'
-    ];
-    const todasMarcas = [...marcasImagens, ...marcasImagens];
-    todasMarcas.forEach(img => {
-      const imgEl = document.createElement('img');
-      imgEl.src = img;
-      imgEl.alt = 'Marca';
-      imgEl.loading = 'lazy';
-      marcasTrack.appendChild(imgEl);
+    const marcasImagens = ['img/marcas/baterias-moura-logo-DEF0B286D5-seeklogo.com_.webp','img/marcas/bosch-logo-4-300x71.webp','img/marcas/cofap-600x315-300x158.webp','img/marcas/logo-frasle-cardoso.webp','img/marcas/logo-havoline-gradient-300x73.webp','img/marcas/logo-hiper-freios-cardoso.webp','img/marcas/logo-magneti-cardoso.webp','img/marcas/logo-mahle-cardoso.webp','img/marcas/logo-paraflu-cardoso.webp','img/marcas/logo-petronas-cardoso.webp','img/marcas/logo-sachs-cardoso.webp','img/marcas/logo-tecfil-cardoso.webp','img/marcas/logo-viemar-cardoso.webp','img/marcas/logo-zetta-cardoso.webp','img/marcas/mobil-logo-png-transparent-300x109.webp','img/marcas/ngk_logo_remotox-300x100.webp','img/marcas/2000px-Texaco_logo.svg-300x96.webp','img/marcas/ACDelco_logo.svg-300x61.webp','img/marcas/KYB_Corporation_company_logo.svg-300x97.webp'];
+    [...marcasImagens, ...marcasImagens].forEach(function(img) {
+      const el = document.createElement('img');
+      el.src = img; el.alt = 'Marca'; el.loading = 'lazy';
+      marcasTrack.appendChild(el);
     });
 
-    // Faixa de depoimentos (carrossel)
+    // Depoimentos
     const depoimentosTrack = document.getElementById('depoimentosTrack');
     const depoimentos = [
       { nome: 'João Vitor', cidade: 'Trairí', texto: 'Atendimento nota 10, peças chegaram no mesmo dia. Minha saveiro ficou nova!' },
       { nome: 'Carla Menezes', cidade: 'Itapipoca', texto: 'Sempre compro aqui. Confiável, preço justo e o Levi é muito atencioso.' },
       { nome: 'Roberto Lima', cidade: 'Trairí', texto: 'Recomendo de olhos fechados. Orçamento rápido e entregam antes do prazo.' }
     ];
-    const todosDepoimentos = [...depoimentos, ...depoimentos, ...depoimentos];
-    todosDepoimentos.forEach(d => {
+    [...depoimentos, ...depoimentos, ...depoimentos].forEach(function(d) {
       const card = document.createElement('div');
       card.className = 'depo-card';
-      card.innerHTML = `
-        <i data-lucide="quote" class="text-brand-yellow/30 w-8 h-8 absolute -top-3 -left-3" style="z-index: 5;"></i>
-        <div class="flex text-brand-yellow gap-1 mt-2">
-          <i data-lucide="star" class="text-brand-yellow [&_svg]:fill-brand-yellow"></i>
-          <i data-lucide="star" class="text-brand-yellow [&_svg]:fill-brand-yellow"></i>
-          <i data-lucide="star" class="text-brand-yellow [&_svg]:fill-brand-yellow"></i>
-          <i data-lucide="star" class="text-brand-yellow [&_svg]:fill-brand-yellow"></i>
-          <i data-lucide="star" class="text-brand-yellow [&_svg]:fill-brand-yellow"></i>
-        </div>
-        <p class="depo-texto text-slate-300">"${d.texto}"</p>
-        <p class="text-white font-bold mt-4 flex items-center gap-2"><i data-lucide="user" class="w-4 h-4"></i> ${d.nome}, ${d.cidade}</p>
-      `;
+      card.innerHTML = '<i class="fas fa-quote-left text-brand-yellow/30" style="position:absolute;top:-10px;left:-10px;font-size:2rem;opacity:0.3;"></i><div style="display:flex;gap:4px;color:#ffcc00;margin-top:8px;">★★★★★</div><p style="color:#e2e8f0;margin-top:12px;position:relative;z-index:1;">"' + d.texto + '"</p><p style="color:white;font-weight:bold;margin-top:16px;display:flex;align-items:center;gap:8px;"><i class="fas fa-user" style="font-size:0.8rem;"></i> ' + d.nome + ', ' + d.cidade + '</p>';
       depoimentosTrack.appendChild(card);
     });
-    if (window.lucide) lucide.createIcons();
 
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const items = document.querySelectorAll('#catalogGrid .glass-card');
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+    // Filtros
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
         btn.classList.add('active');
         const filter = btn.dataset.filter;
-        items.forEach(item => {
-          const category = item.dataset.category;
-          const shouldShow = filter === 'all' || category === filter;
-          item.style.display = shouldShow ? 'block' : 'none';
-          if (shouldShow) { item.classList.remove('is-visible'); setTimeout(() => item.classList.add('is-visible'), 50); }
+        document.querySelectorAll('#catalogGrid .glass-card').forEach(function(item) {
+          item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
         });
       });
     });
 
-    const fadeEls = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    fadeEls.forEach(el => observer.observe(el));
+    // Animação fade-up
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.fade-up').forEach(function(el) { observer.observe(el); });
 
-    const counters = document.querySelectorAll('.stat-number');
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    // Contadores
+    const counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          const el = entry.target; const target = parseInt(el.dataset.target); let current = 0;
-          const increment = Math.ceil(target / 60);
-          const timer = setInterval(() => { current += increment; if (current >= target) { el.textContent = target; clearInterval(timer); } else el.textContent = current; }, 25);
+          const el = entry.target, target = parseInt(el.dataset.target);
+          let current = 0;
+          const timer = setInterval(function() {
+            current += Math.ceil(target/60);
+            if (current >= target) { el.textContent = target; clearInterval(timer); }
+            else el.textContent = current;
+          }, 25);
           counterObserver.unobserve(el);
         }
       });
     }, { threshold: 0.5 });
-    counters.forEach(c => counterObserver.observe(c));
+    document.querySelectorAll('.stat-number').forEach(function(c) { counterObserver.observe(c); });
 
+    // Botão voltar ao topo
     const backBtn = document.getElementById('backTop');
-    window.addEventListener('scroll', () => { backBtn.classList.toggle('visible', window.scrollY > 600); });
-    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', function() { backBtn.classList.toggle('visible', window.scrollY > 600); });
+    backBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => { const top = section.offsetTop - 150; if (window.scrollY >= top) current = section.getAttribute('id'); });
-      navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + current));
-    });
-
+    // Modal
     const modal = document.getElementById('contactModal');
-    const openBtns = document.querySelectorAll('.open-modal-btn');
     const closeBtn = document.getElementById('closeModalBtn');
-    let lastFocusedElement = null;
-    function openModal(e) { e.preventDefault(); lastFocusedElement = document.activeElement; modal.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus(); }
-    function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus(); }
-    modal.addEventListener('keydown', (e) => {
-      if (e.key !== 'Tab') return;
-      const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      const first = focusableElements[0]; const last = focusableElements[focusableElements.length - 1];
-      if (e.shiftKey) { if (document.activeElement === first) { e.preventDefault(); last.focus(); } }
-      else { if (document.activeElement === last) { e.preventDefault(); first.focus(); } }
+    document.querySelectorAll('.open-modal-btn').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      });
     });
-    openBtns.forEach(btn => btn.addEventListener('click', openModal));
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    closeBtn.addEventListener('click', function() { modal.classList.remove('open'); document.body.style.overflow = ''; });
+    modal.addEventListener('click', function(e) { if (e.target === modal) { modal.classList.remove('open'); document.body.style.overflow = ''; } });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && modal.classList.contains('open')) { modal.classList.remove('open'); document.body.style.overflow = ''; } });
   });
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "AutoPartsStore",
-  "name": "Auto Peças Trairi",
-  "description": "Autopeças e acessórios em geral — pneus, óleos, freios, palhetas, linha leve e pesada.",
-  "address": { "@type": "PostalAddress", "streetAddress": "Av. Salvador Martins, 398", "addressLocality": "Trairi", "addressRegion": "CE", "postalCode": "62690-000", "addressCountry": "BR" },
-  "telephone": "+558533511111",
-  "openingHours": "Mo-Fr 08:00-18:00, Sa 08:00-12:00",
-  "url": "https://www.autopecastrairi.com.br",
-  "sameAs": ["https://www.instagram.com/autopecastrairi", "https://wa.me/5585981221396"]
-}
 </script>
 </body>
 </html>
