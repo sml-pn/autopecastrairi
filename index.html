@@ -34,13 +34,13 @@
     .font-poppins { font-family: 'Poppins', sans-serif; }
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: #0b1a2b; }
-    ::-webkit-scrollbar-thumb { background: #ffcc00; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #ffcc00; border-radius: 50%; }
     :focus-visible { outline: 2px solid #ffcc00; outline-offset: 3px; border-radius: 4px; }
 
     #preloader { position: fixed; inset: 0; z-index: 9999; background: #0b1a2b; display: flex; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease; }
     #preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #e30613, #ffcc00); z-index: 100; width: 0%; transition: width 0.1s linear; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, #e30613, #ffcc00); z-index: 100; width: 0%; transition: width 0.3s ease-out; box-shadow: 0 1px 8px rgba(255,204,0,0.3); }
 
     .site-header { position: sticky; top: 0; z-index: 60; background: rgba(11, 26, 43, 0.78); backdrop-filter: blur(16px) saturate(180%); border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
     .nav-link { color: #94a3b8; font-weight: 500; font-size: 14px; transition: color 0.3s, border-color 0.3s; border-bottom: 2px solid transparent; padding-bottom: 4px; text-decoration: none; }
@@ -67,7 +67,7 @@
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .carousel-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 10; }
     .carousel-dots button { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; cursor: pointer; padding: 0; }
-    .carousel-dots button.active { background: #ffcc00; width: 28px; border-radius: 10px; }
+    .carousel-dots button.active { background: #ffcc00; width: 28px; border-radius: 50%; }
 
     .marcas-section { padding: 2.5rem 0; } .marcas-section .section-title { color: #fff; }
     .marcas-slider { width: 100%; overflow: hidden; } .marcas-track { display: flex; width: max-content; animation: scrollMarcas 60s linear infinite; }
@@ -90,16 +90,45 @@
     .filter-btn.active, .filter-btn:hover { background: rgba(255,204,0,0.12); color: #ffcc00; border-color: #ffcc00; }
     .back-top { position: fixed; bottom: 100px; right: 28px; z-index: 60; width: 48px; height: 48px; border-radius: 50%; background: #ffcc00; color: #0b1a2b; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; cursor: pointer; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 28px; font-weight: bold; }
     .back-top.visible { opacity: 1; visibility: visible; } .back-top:hover { background: #e6b800; }
-    .contact-modal { position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.7); backdrop-filter: blur(12px); display: flex; align-items: flex-start; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; padding: 20px; overflow-y: auto; }
+
+    .contact-modal { position: fixed; inset: 0; z-index: 999; background: rgba(0,0,0,0.7); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; padding: 20px; overflow-y: auto; }
     .contact-modal.open { opacity: 1; visibility: visible; }
-    .contact-modal-content { background: #0f2137; border: 1px solid rgba(255,255,255,0.1); border-radius: 32px; max-width: 480px; width: 100%; box-shadow: 0 40px 80px rgba(0,0,0,0.6); transform: scale(0.9) translateY(20px); transition: transform 0.3s; margin: auto; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; }
+    .contact-modal-content { background: #0f2137; border: 1px solid rgba(255,255,255,0.1); border-radius: 32px; max-width: 500px; width: 100%; box-shadow: 0 40px 80px rgba(0,0,0,0.6); transform: scale(0.9) translateY(20px); transition: transform 0.3s; margin: auto; max-height: 90vh; display: flex; flex-direction: column; overflow: hidden; }
     .contact-modal.open .contact-modal-content { transform: scale(1) translateY(0); }
-    .contact-modal-header { display: flex; justify-content: space-between; align-items: center; padding: 28px 28px 16px; background: #0f2137; position: sticky; top: 0; z-index: 2; }
-    .close-modal { background: rgba(255,255,255,0.05); border: none; color: #94a3b8; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-    .modal-body { padding: 0 28px 28px; overflow-y: auto; } .contact-list { display: flex; flex-direction: column; gap: 12px; }
-    .contact-item { display: flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 16px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+    .contact-modal-header { display: flex; justify-content: space-between; align-items: center; padding: 24px 24px 12px; background: #0f2137; position: sticky; top: 0; z-index: 2; }
+    .contact-modal-header h2 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1.3rem; color: #fff; }
+    .close-modal { background: rgba(255,255,255,0.05); border: none; color: #94a3b8; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+    .modal-body { padding: 0 20px 20px; overflow-y: auto; max-height: 65vh; }
+    .contact-list { display: flex; flex-direction: column; gap: 10px; }
+    .contact-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 14px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06); }
+    .contact-item .icon-wrap { border-radius: 50%;  width: 42px; height: 42px; border-radius: 50%; background: rgba(255,204,0,0.1); display: flex; align-items: center; justify-content: center; color: #ffcc00; flex-shrink: 0; overflow: hidden; }
+    .contact-item .icon-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .contact-item .info { flex: 1; min-width: 0; }
+    .contact-item .info .name { font-weight: 700; color: #fff; font-size: 0.9rem; }
+    .contact-item .info .role { font-size: 0.7rem; color: #94a3b8; }
+    .contact-actions { display: flex; gap: 6px; flex-shrink: 0; }
+    .contact-actions a { padding: 5px 10px; border-radius: 30px; font-size: 11px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+    .contact-actions .wa-link { background: #19b94a; color: #fff; }
+    .contact-actions .tel-link { background: rgba(255,255,255,0.1); color: #fff; }
+
     .wa-float { position: fixed; right: 24px; bottom: 24px; z-index: 70; width: 64px; height: 64px; border-radius: 50%; background: #1fca59; color: white; display: flex; align-items: center; justify-content: center; box-shadow: 0 12px 40px rgba(31,202,89,0.4); }
-    @media (max-width: 640px) { .carousel-track { aspect-ratio: 16/12; } }
+    .wa-float:hover { transform: scale(1.08); }
+    .wa-float::before { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid #1fca59; animation: pulseWa 2s ease-out infinite; }
+    @keyframes pulseWa { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
+
+    @media (max-width: 640px) {
+      .carousel-track { aspect-ratio: 16/12; }
+      .contact-modal { padding: 8px; align-items: flex-end; }
+      .contact-modal-content { max-height: 80vh; border-radius: 22px 22px 0 0; }
+      .contact-modal-header { padding: 16px 14px 10px; }
+      .contact-modal-header h2 { font-size: 1.1rem; }
+      .modal-body { padding: 0 10px 14px; }
+      .contact-item { gap: 8px; padding: 8px 10px; }
+      .contact-item .icon-wrap { border-radius: 50%;  width: 34px; height: 34px; border-radius: 8px; }
+      .contact-item .icon-wrap img { border-radius: 50% !important; }
+      .contact-item .info .name { font-size: 0.8rem; }
+      .contact-actions a { padding: 4px 8px; font-size: 10px; }
+    }
   </style>
 </head>
 <body>
@@ -107,15 +136,10 @@
   <div style="text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;">
     <svg width="300" height="180" viewBox="0 0 300 190" xmlns="http://www.w3.org/2000/svg">
       <path d="M 55 170 A 95 95 0 0 1 245 170" fill="none" stroke="#1e293b" stroke-width="14" stroke-linecap="round"/>
-      <defs>
-        <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#ffcc00;stop-opacity:0.8"/>
-          <stop offset="100%" style="stop-color:#e30613;stop-opacity:0.8"/>
-        </linearGradient>
-      </defs>
+      <defs><linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#ffcc00;stop-opacity:0.8"/><stop offset="100%" style="stop-color:#e30613;stop-opacity:0.8"/></linearGradient></defs>
       <path d="M 55 170 A 95 95 0 0 1 245 170" fill="none" stroke="url(#arcGrad)" stroke-width="3" stroke-linecap="round"/>
       <g id="speedMarks"></g>
-      <g id="speedNeedle" style="transform-origin:150px 170px; transform:rotate(-180deg); transition:transform 0.08s cubic-bezier(0.25,0.46,0.45,0.94);">
+      <g id="speedNeedle" style="transform-origin:150px 170px; transform:rotate(-135deg); transition:transform 0.08s cubic-bezier(0.25,0.46,0.45,0.94);">
         <line x1="150" y1="170" x2="150" y2="58" stroke="#ffcc00" stroke-width="3.5" stroke-linecap="round"/>
         <line x1="150" y1="170" x2="150" y2="58" stroke="#e30613" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
         <circle cx="150" cy="170" r="12" fill="#0b1a2b" stroke="#ffcc00" stroke-width="3"/>
@@ -133,24 +157,14 @@
     <div class="h-[72px] flex items-center justify-between gap-4">
       <a href="#inicio" class="flex items-center gap-2" aria-label="Auto Peças Trairi"><img src="img/logo_sem_fundo.png" alt="Logo" class="h-10 sm:h-12 w-auto rounded-2xl"/></a>
       <nav class="hidden md:flex items-center gap-8">
-        <a href="#inicio" class="nav-link active">Início</a>
-        <a href="#pecas" class="nav-link">Peças</a>
-        <a href="#diferenciais" class="nav-link">Diferenciais</a>
-        <a href="#marcas" class="nav-link">Marcas</a>
-        <a href="#depoimentos" class="nav-link">Depoimentos</a>
-        <a href="#contato" class="nav-link">Contato</a>
+        <a href="#inicio" class="nav-link active">Início</a><a href="#pecas" class="nav-link">Peças</a><a href="#diferenciais" class="nav-link">Diferenciais</a><a href="#marcas" class="nav-link">Marcas</a><a href="#depoimentos" class="nav-link">Depoimentos</a><a href="#contato" class="nav-link">Contato</a>
       </nav>
       <button class="open-modal-btn hidden sm:flex items-center gap-2 bg-[#18b94a] text-white text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#16a843] transition border-0 cursor-pointer"><i class="fab fa-whatsapp text-lg"></i> WhatsApp</button>
       <button id="hamburgerBtn" class="md:hidden hamburger" aria-label="Abrir menu"><span class="line"></span><span class="line"></span><span class="line"></span></button>
     </div>
   </div>
   <div id="mobileMenu" class="mobile-menu">
-    <a href="#inicio" class="nav-link active" onclick="closeMenu()">Início</a>
-    <a href="#pecas" class="nav-link" onclick="closeMenu()">Peças</a>
-    <a href="#diferenciais" class="nav-link" onclick="closeMenu()">Diferenciais</a>
-    <a href="#marcas" class="nav-link" onclick="closeMenu()">Marcas</a>
-    <a href="#depoimentos" class="nav-link" onclick="closeMenu()">Depoimentos</a>
-    <a href="#contato" class="nav-link" onclick="closeMenu()">Contato</a>
+    <a href="#inicio" class="nav-link active" onclick="closeMenu()">Início</a><a href="#pecas" class="nav-link" onclick="closeMenu()">Peças</a><a href="#diferenciais" class="nav-link" onclick="closeMenu()">Diferenciais</a><a href="#marcas" class="nav-link" onclick="closeMenu()">Marcas</a><a href="#depoimentos" class="nav-link" onclick="closeMenu()">Depoimentos</a><a href="#contato" class="nav-link" onclick="closeMenu()">Contato</a>
     <button class="open-modal-btn btn btn-wa px-6 py-3 mt-4 border-0 cursor-pointer" onclick="closeMenu()"><i class="fab fa-whatsapp"></i> WhatsApp</button>
   </div>
 </header>
@@ -177,19 +191,69 @@
 
 <footer class="border-t border-white/10 bg-[#060f1a] py-12"><div class="max-w-7xl mx-auto px-5 sm:px-8"><div class="grid grid-cols-2 lg:grid-cols-3 gap-8"><div class="col-span-2 lg:col-span-1"><img src="img/logo_sem_fundo.png" alt="Logo" class="h-8 mb-3 rounded-2xl"/><p class="text-slate-400 text-sm"><i class="fas fa-map-marker-alt mr-1"></i> Peças que movem o Ceará.</p><p class="text-slate-400 text-sm mt-2">© 2026 Auto Peças Trairi.</p></div><div><h4 class="text-white font-bold text-sm uppercase mb-3"><i class="fas fa-link mr-2"></i> Institucional</h4><ul class="space-y-2 text-sm text-slate-400"><li><a href="#inicio" class="hover:text-white">Início</a></li><li><a href="#pecas" class="hover:text-white">Peças</a></li><li><a href="#marcas" class="hover:text-white">Marcas</a></li><li><a href="#contato" class="hover:text-white">Contato</a></li></ul></div><div><h4 class="text-white font-bold text-sm uppercase mb-3"><i class="fas fa-phone mr-2"></i> Contato</h4><ul class="space-y-2 text-sm text-slate-400 mb-4"><li><a href="tel:+558533511111" class="hover:text-white">(85) 3351-1111</a></li><li>Trairí-CE</li><li>@autopecastrairi</li></ul><div class="flex gap-4"><a href="https://www.instagram.com/autopecastrairi" target="_blank" class="text-slate-400 hover:text-white"><i class="fab fa-instagram text-2xl" style="color:#E1306C;"></i></a><button class="open-modal-btn text-slate-400 hover:text-white bg-transparent border-0 cursor-pointer p-0"><i class="fab fa-whatsapp text-2xl" style="color:#1fca59;"></i></button></div></div></div><div class="border-t border-white/5 mt-10 pt-6 text-center text-slate-500 text-sm">Todos os direitos reservados.</div></div></footer>
 
-<div id="contactModal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle"><div class="contact-modal-content"><div class="contact-modal-header"><h2 id="contactModalTitle"><i class="fab fa-whatsapp text-brand-yellow mr-2"></i> Fale com nossa equipe</h2><button class="close-modal" id="closeModalBtn" aria-label="Fechar"><i class="fas fa-times"></i></button></div><div class="modal-body"><div class="contact-list"><div class="contact-item"><div class="icon-wrap"><i class="fas fa-user"></i></div><div class="info"><div class="name">João Vitor</div><div class="role">Vendas</div></div><div class="contact-actions"><a href="https://wa.me/5585981221396" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+5585981221396" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div><div class="contact-item"><div class="icon-wrap"><i class="fas fa-user"></i></div><div class="info"><div class="name">Levi</div><div class="role">Vendas</div></div><div class="contact-actions"><a href="https://wa.me/5585996917343" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+5585996917343" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div><div class="contact-item"><div class="icon-wrap"><i class="fas fa-user"></i></div><div class="info"><div class="name">Leandro</div><div class="role">Vendas</div></div><div class="contact-actions"><a href="https://wa.me/5585996917331" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+5585996917331" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div><div class="contact-item"><div class="icon-wrap"><i class="fas fa-user"></i></div><div class="info"><div class="name">Rony</div><div class="role">Vendas</div></div><div class="contact-actions"><a href="https://wa.me/5585991171031" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="tel:+5585991171031" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div><div class="contact-item"><div class="icon-wrap"><i class="fas fa-phone"></i></div><div class="info"><div class="name">Telefone fixo</div><div class="role">Geral</div></div><div class="contact-actions"><a href="tel:+558533511111" class="tel-link"><i class="fas fa-phone"></i> Ligar</a></div></div></div><p style="font-size:0.8rem;color:#94a3b8;margin-top:16px;text-align:center;"><i class="fas fa-exclamation-circle mr-1"></i> Se o WhatsApp não abrir, use a opção "Ligar".</p></div></div></div>
+<div id="contactModal" class="contact-modal" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+  <div class="contact-modal-content">
+    <div class="contact-modal-header">
+      <h2 id="contactModalTitle"><i class="fab fa-whatsapp text-brand-yellow mr-2"></i> Fale com nossa equipe</h2>
+      <button class="close-modal" id="closeModalBtn" aria-label="Fechar"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body">
+      <p style="font-size:0.85rem;color:#cbd5e1;margin-bottom:14px;text-align:center;">Escolha um de nossos vendedores para atendimento imediato.</p>
+      <div class="contact-list">
+        <div class="contact-item">
+          <div class="icon-wrap"><img src="img/vendedores/joaovitor.png" alt="João Vitor"/></div>
+          <div class="info"><div class="name">João Vitor</div><div class="role">Vendas</div></div>
+          <div class="contact-actions">
+            <a href="https://wa.me/5585981221396?text=Oi%20Jo%C3%A3o%20Vitor" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+5585981221396" class="tel-link"><i class="fas fa-phone"></i> Ligar</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon-wrap"><img src="img/vendedores/leonardo.png" alt="Leonardo"/></div>
+          <div class="info"><div class="name">Leonardo</div><div class="role">Vendas</div></div>
+          <div class="contact-actions">
+            <a href="https://wa.me/5585996917343?text=Oi%20Leonardo" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+5585996917343" class="tel-link"><i class="fas fa-phone"></i> Ligar</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon-wrap"><img src="img/vendedores/leandro.png" alt="Leandro"/></div>
+          <div class="info"><div class="name">Leandro</div><div class="role">Vendas</div></div>
+          <div class="contact-actions">
+            <a href="https://wa.me/5585996917331?text=Oi%20Leandro" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+5585996917331" class="tel-link"><i class="fas fa-phone"></i> Ligar</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon-wrap"><img src="img/vendedores/rony.png" alt="Rony"/></div>
+          <div class="info"><div class="name">Rony</div><div class="role">Vendas</div></div>
+          <div class="contact-actions">
+            <a href="https://wa.me/5585991171031?text=Oi%20Rony" target="_blank" rel="noopener" class="wa-link"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="tel:+5585991171031" class="tel-link"><i class="fas fa-phone"></i> Ligar</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon-wrap"><i class="fas fa-phone"></i></div>
+          <div class="info"><div class="name">Telefone fixo</div><div class="role">Geral</div></div>
+          <div class="contact-actions">
+            <a href="tel:+558533511111" class="tel-link"><i class="fas fa-phone"></i> Ligar</a>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:0.75rem;color:#94a3b8;margin-top:16px;text-align:center;"><i class="fas fa-exclamation-circle mr-1"></i> Se o WhatsApp não abrir, use a opção "Ligar".</p>
+    </div>
+  </div>
+</div>
 
 <button id="backTop" class="back-top" aria-label="Voltar ao topo">↑</button>
 <button class="open-modal-btn wa-float border-0 cursor-pointer" aria-label="WhatsApp"><i class="fab fa-whatsapp" style="font-size:32px;"></i></button>
 
 <script>
-  // ========== PRELOADER VELOCÍMETRO 100% SINCRONIZADO ==========
   (function() {
     const needle = document.getElementById('speedNeedle');
     const marksGroup = document.getElementById('speedMarks');
     const speedDisplay = document.getElementById('speedDisplay');
     const cx = 150, cy = 170, r = 95;
-    
     for (let val = 0; val <= 200; val += 10) {
       const angleDeg = -180 + (val / 200) * 180;
       const angleRad = angleDeg * Math.PI / 180;
@@ -219,7 +283,6 @@
         marksGroup.appendChild(text);
       }
     }
-    
     const speedCurve = [];
     for (let i = 0; i <= 35; i++) {
       const t = i / 35;
@@ -228,18 +291,15 @@
     }
     let index = 0;
     function updateSpeedometer() {
-      if (index >= speedCurve.length) {
-        document.getElementById('preloader').classList.add('hidden');
-        return;
-      }
+      if (index >= speedCurve.length) { document.getElementById('preloader').classList.add('hidden'); return; }
       const val = speedCurve[index];
-      const angle = -100 + (val / 200) * 180;
+      const angle = -90 + (val / 200) * 180;
       needle.style.transform = `rotate(${angle}deg)`;
       speedDisplay.innerHTML = `${val} <span style="font-size:1rem;color:#94a3b8;font-weight:400;">km/h</span>`;
       index++;
       const progress = index / speedCurve.length;
       const delay = 15 + (1 - progress) * 15;
-      setTimeout(updateSpeedometer, Math.max(delay, 20));
+      setTimeout(updateSpeedometer, Math.max(delay, 10));
     }
     setTimeout(updateSpeedometer, 100);
     setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 2500);
@@ -253,7 +313,6 @@
   document.addEventListener('DOMContentLoaded', function() {
     const progressBar = document.getElementById('progress-bar');
     window.addEventListener('scroll', () => { progressBar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%'; });
-
     const track = document.getElementById('carouselTrack'), dotsContainer = document.getElementById('carouselDots'), slides = track.querySelectorAll('.carousel-slide');
     let currentIndex = 0, interval;
     slides.forEach((_, i) => { const dot = document.createElement('button'); dot.setAttribute('aria-label', 'Slide '+(i+1)); if(i===0) dot.classList.add('active'); dot.addEventListener('click', () => goTo(i)); dotsContainer.appendChild(dot); });
@@ -262,34 +321,25 @@
     interval = setInterval(() => goTo((currentIndex+1)%slides.length), 4500);
     track.addEventListener('mouseenter', () => clearInterval(interval));
     track.addEventListener('mouseleave', () => interval = setInterval(() => goTo((currentIndex+1)%slides.length), 4500));
-
     const marcasTrack = document.getElementById('marcasTrack');
     const marcasImagens = ['img/marcas/baterias-moura-logo-DEF0B286D5-seeklogo.com_.webp','img/marcas/bosch-logo-4-300x71.webp','img/marcas/cofap-600x315-300x158.webp','img/marcas/logo-frasle-cardoso.webp','img/marcas/logo-havoline-gradient-300x73.webp','img/marcas/logo-hiper-freios-cardoso.webp','img/marcas/logo-magneti-cardoso.webp','img/marcas/logo-mahle-cardoso.webp','img/marcas/logo-paraflu-cardoso.webp','img/marcas/logo-petronas-cardoso.webp','img/marcas/logo-sachs-cardoso.webp','img/marcas/logo-tecfil-cardoso.webp','img/marcas/logo-viemar-cardoso.webp','img/marcas/logo-zetta-cardoso.webp','img/marcas/mobil-logo-png-transparent-300x109.webp','img/marcas/ngk_logo_remotox-300x100.webp','img/marcas/2000px-Texaco_logo.svg-300x96.webp','img/marcas/ACDelco_logo.svg-300x61.webp','img/marcas/KYB_Corporation_company_logo.svg-300x97.webp'];
     [...marcasImagens, ...marcasImagens].forEach(img => { const el = document.createElement('img'); el.src = img; el.alt = 'Marca'; el.loading = 'lazy'; marcasTrack.appendChild(el); });
-
     const depoimentosTrack = document.getElementById('depoimentosTrack');
-    const depoimentos = [{ nome: 'João Vitor', cidade: 'Trairí', texto: 'Atendimento nota 10, peças chegaram no mesmo dia. Minha saveiro ficou nova!' },{ nome: 'Carla Menezes', cidade: 'Itapipoca', texto: 'Sempre compro aqui. Confiável, preço justo e o Levi é muito atencioso.' },{ nome: 'Roberto Lima', cidade: 'Trairí', texto: 'Recomendo de olhos fechados. Orçamento rápido e entregam antes do prazo.' }];
+    const depoimentos = [{ nome: 'João Vitor', cidade: 'Trairí', texto: 'Atendimento nota 10, peças chegaram no mesmo dia. Minha saveiro ficou nova!' },{ nome: 'Carla Menezes', cidade: 'Itapipoca', texto: 'Sempre compro aqui. Confiável, preço justo e o Leonardo é muito atencioso.' },{ nome: 'Roberto Lima', cidade: 'Trairí', texto: 'Recomendo de olhos fechados. Orçamento rápido e entregam antes do prazo.' }];
     [...depoimentos, ...depoimentos, ...depoimentos].forEach(d => { const card = document.createElement('div'); card.className = 'depo-card'; card.innerHTML = '<i class="fas fa-quote-left" style="position:absolute;top:-10px;left:-10px;font-size:2rem;opacity:0.3;color:#ffcc00;"></i><div style="display:flex;gap:4px;color:#ffcc00;margin-top:8px;">★★★★★</div><p style="color:#e2e8f0;margin-top:12px;position:relative;z-index:1;">"'+d.texto+'"</p><p style="color:white;font-weight:bold;margin-top:16px;display:flex;align-items:center;gap:8px;"><i class="fas fa-user" style="font-size:0.8rem;"></i> '+d.nome+', '+d.cidade+'</p>'; depoimentosTrack.appendChild(card); });
-
     document.querySelectorAll('.filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); const filter = btn.dataset.filter; document.querySelectorAll('#catalogGrid .glass-card').forEach(item => { item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none'; }); }); });
-
     const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); }); }, { threshold: 0.15 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
     const counterObserver = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { const el = entry.target, target = parseInt(el.dataset.target); let current = 0; const timer = setInterval(() => { current += Math.ceil(target/60); if (current >= target) { el.textContent = target; clearInterval(timer); } else el.textContent = current; }, 25); counterObserver.unobserve(el); } }); }, { threshold: 0.5 });
     document.querySelectorAll('.stat-number').forEach(c => counterObserver.observe(c));
-
     const backBtn = document.getElementById('backTop');
     window.addEventListener('scroll', () => { backBtn.classList.toggle('visible', window.scrollY > 600); });
     backBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
-
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     function updateActiveLink() { let current = ''; sections.forEach(section => { const top = section.offsetTop - 100; if (window.scrollY >= top) current = section.getAttribute('id'); }); navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); }); }
-    updateActiveLink();
-    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink(); window.addEventListener('scroll', updateActiveLink);
     navLinks.forEach(link => { link.addEventListener('click', function() { navLinks.forEach(l => l.classList.remove('active')); this.classList.add('active'); }); });
-
     const modal = document.getElementById('contactModal'), closeBtn = document.getElementById('closeModalBtn');
     document.querySelectorAll('.open-modal-btn').forEach(btn => { btn.addEventListener('click', e => { e.preventDefault(); modal.classList.add('open'); document.body.style.overflow = 'hidden'; closeBtn.focus(); }); });
     closeBtn.addEventListener('click', () => { modal.classList.remove('open'); document.body.style.overflow = ''; });
