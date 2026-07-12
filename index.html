@@ -93,7 +93,7 @@
     .card-badge { position: absolute; top: 16px; left: 16px; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); padding: 6px 14px; border-radius: 40px; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #ffcc00; border: 1px solid rgba(255,204,0,0.2); }
     .fade-up { opacity: 0; transform: translateY(50px); transition: opacity 0.8s, transform 0.8s; } .fade-up.is-visible { opacity: 1; transform: translateY(0); }
     .stat-number { font-size: clamp(2.5rem,5vw,4rem); font-weight: 900; color: #ffcc00; font-family: 'Poppins', sans-serif; line-height: 1; }
-    .map-container { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); width: 100%; }
+    .map-container { border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); width: 100vw; margin-left: calc(-50vw + 50%); }
     .filter-btn { padding: 8px 20px; border-radius: 40px; font-weight: 600; font-size: 14px; background: rgba(255,255,255,0.04); color: #94a3b8; border: 1px solid transparent; transition: all 0.3s; cursor: pointer; }
     .filter-btn.active, .filter-btn:hover { background: rgba(255,204,0,0.12); color: #ffcc00; border-color: #ffcc00; }
     .back-top { position: fixed; bottom: 100px; right: 28px; z-index: 60; width: 48px; height: 48px; border-radius: 50%; background: #ffcc00; color: #0b1a2b; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: all 0.3s; cursor: pointer; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.3); font-size: 28px; font-weight: bold; }
@@ -125,6 +125,7 @@
     @keyframes pulseWa { 0% { transform: scale(0.8); opacity: 0.8; } 100% { transform: scale(1.6); opacity: 0; } }
 
     @media (max-width: 640px) {
+      .map-container { width: 100vw; margin-left: calc(-50vw + 50%); border-radius: 0; }
       .carousel-track { height: 320px; }
       .contact-modal { padding: 8px; align-items: flex-end; }
       .contact-modal-content { max-height: 80vh; border-radius: 22px 22px 0 0; }
